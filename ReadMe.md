@@ -4,9 +4,14 @@ sameryousry99@gmail.com
 eng.ali.essam@gmail.com
 ## Project README
 
-## handwritten models design
-![alt text](Hierrachy 1.jpeg)
-![alt text](Hierrachy 2.jpeg)
+## Handwritten Models Design
+
+
+![Hierarchy 1](Hierrachy 1.jpeg)  
+This diagram shows the top-level structure of the handwritten model, including the main components and their relationships.
+
+![Hierarchy 2](Hierrachy 2.jpeg)  
+This diagram expands on the second level, detailing subcomponents and their interactions.
 
 ## Project Overview
 
