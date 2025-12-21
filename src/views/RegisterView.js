@@ -15,7 +15,6 @@ export class RegisterView {
         this.registerForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const mobileValue = this.mobileInput.value.trim();
-            const phoneRegex = /^01[0125][0-9]{8}$/; // Egyptian phone number format
 
             if (!phoneRegex.test(mobileValue)) {
                 this.showError("Please enter a valid Egyptian phone number.");
