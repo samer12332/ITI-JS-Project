@@ -12,7 +12,7 @@ body {
 .nav-brand {
     font-size: 24px;
     font-weight: 700;
-    background: linear-gradient(135deg, var(--color-accent-start), var(--color-accent-end));
+    background: linear-gradient(135deg, #ff7a59, #ff5a2a);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
