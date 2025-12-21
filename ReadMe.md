@@ -4,6 +4,8 @@ sameryousry99@gmail.com
 eng.ali.essam@gmail.com
 ## Project README
 
+## initial users {"student1", password: "password123"}, {"teacher1", password: "password123"}
+
 ## Handwritten Models Design
 
 
