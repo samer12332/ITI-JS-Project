@@ -42,7 +42,7 @@ Manual adjustments were made where needed to fit the project structure.
 ## Team Contributions
 ## Team Member 1
 
-Responsible for manual implementation of:
+Responsible for implementation of:
 
 Registration
 
@@ -60,7 +60,7 @@ Exam Results
 
 ## Team Member 2
 
-Responsible for manual implementation of:
+Responsible for implementation of:
 
 Exam Service
 
