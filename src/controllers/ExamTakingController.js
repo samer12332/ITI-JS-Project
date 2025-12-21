@@ -201,14 +201,14 @@ class ExamTakingController {
         console.log('Submitting exam with answers:', this.userAnswers);
         console.log('Original questions:', this.originalQuestions);
 
-        examService.submitExamResult(this.examId, this.currentUser.id, this.userAnswers, 0);
+        examService.submitExamResult(this.examId, this.currentUser.id, this.userAnswers);
         window.location.href = `exam-result.html?examId=${this.examId}`;
     }
 
     autoSubmitExam() {
         alert('Time is up! Your exam will be submitted automatically.');
         clearInterval(this.timerInterval);
-        examService.submitExamResult(this.examId, this.currentUser.id, this.userAnswers, 0);
+        examService.submitExamResult(this.examId, this.currentUser.id, this.userAnswers);
         window.location.href = `exam-result.html?examId=${this.examId}`;
     }
 }
