@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exam Results - QuizVerse</title>
+  <link rel="stylesheet" href="styles/global.css">
+  <link rel="stylesheet" href="./styles/exam-result.css">
+</head>
+<body>
+  <!-- Floating Bubbles Background -->
+  <div class="bubbles-container">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+      <div class="nav-brand">QuizVerse</div>
+      <div class="nav-actions">
+        <button class="btn btn-secondary">
+          Back to Profile
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Results Container -->
+  <div class="results-container">
+    <!-- Cosmic Decorations -->
+    <div class="cosmic-decoration decoration-1"></div>
+    <div class="cosmic-decoration decoration-2"></div>
+
+    <!-- Results Card -->
+    <div class="results-card fade-in">
+      <div class="result-icon" id="resultIcon">🎉</div>
+      <div class="result-title" id="resultTitle">Congratulations!</div>
+      <div class="result-message" id="resultMessage">
+        You've completed the exam. Here are your results.
+      </div>
+
+      <div class="score-display" id="scoreDisplay">0%</div>
+      <div class="score-label">Final Score</div>
+
+      <!-- Statistics Grid -->
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-value" id="correctCount">0</div>
+          <div class="stat-label">Correct</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="totalQuestions">0</div>
+          <div class="stat-label">Total Questions</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value" id="timeSpent">0m</div>
+          <div class="stat-label">Time Spent</div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button class="btn btn-secondary">
+          Return to Dashboard
+        </button>
+        <button class="btn btn-primary">
+          View Detailed Analytics
+        </button>
+      </div>
+    </div>
+
+    <!-- Performance Breakdown Section -->
+    <div class="breakdown-section fade-in">
+      <div class="breakdown-title">
+        <span>📊</span>
+        <span>Performance by Difficulty</span>
+      </div>
+
+      <!-- Difficulty Breakdown -->
+      <div class="difficulty-breakdown">
+        <div class="difficulty-row">
+          <div class="difficulty-label" style="color: #22c55e;">Easy</div>
+          <div class="difficulty-bar-container">
+            <div class="difficulty-bar" id="easyBar" style="background: #22c55e; width: 0%;"></div>
+          </div>
+          <div class="difficulty-percentage" id="easyPercentage">0%</div>
+        </div>
+
+        <div class="difficulty-row">
+          <div class="difficulty-label" style="color: #f59e0b;">Medium</div>
+          <div class="difficulty-bar-container">
+            <div class="difficulty-bar" id="mediumBar" style="background: #f59e0b; width: 0%;"></div>
+          </div>
+          <div class="difficulty-percentage" id="mediumPercentage">0%</div>
+        </div>
+
+        <div class="difficulty-row">
+          <div class="difficulty-label" style="color: #ef4444;">Hard</div>
+          <div class="difficulty-bar-container">
+            <div class="difficulty-bar" id="hardBar" style="background: #ef4444; width: 0%;"></div>
+          </div>
+          <div class="difficulty-percentage" id="hardPercentage">0%</div>
+        </div>
+      </div>
+
+      <!-- Performance Chart -->
+      <div class="performance-chart" id="performanceChart">
+        <!-- Chart bars populated by JavaScript -->
+      </div>
+      <div style="display: flex; justify-content: space-around; margin-top: 8px;" id="chartLabels">
+        <!-- Chart labels populated by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Exam Result Controller Script -->
+  <script type="module" src="src/controllers/ExamResultController.js"></script>
+</body>
+</html>

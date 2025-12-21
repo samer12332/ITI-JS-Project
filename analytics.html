@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics - QuizVerse</title>
+  <link rel="stylesheet" href="styles/global.css">
+  <link rel="stylesheet" href="styles/analytics.css">
+</head>
+<body>
+  <!-- Floating Bubbles Background -->
+  <div class="bubbles-container">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+      <div class="nav-brand">QuizVerse</div>
+      <div class="nav-actions">
+        <button class="btn btn-secondary">
+          Back to Profile
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Analytics Container -->
+  <div class="analytics-container">
+    <div class="container">
+      <!-- Page Header -->
+      <div class="page-header fade-in">
+        <div class="page-title">Performance Analytics</div>
+        <div class="page-subtitle" id="studentName">Detailed insights into your exam performance</div>
+      </div>
+
+      <!-- Stats Overview Cards -->
+      <div class="dashboard-grid fade-in" style="margin-bottom: 32px;">
+        <div class="stat-card">
+          <div class="stat-value" id="totalExams">0</div>
+          <div class="stat-label">Exams Taken</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="avgScore">0%</div>
+          <div class="stat-label">Average Score</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="highestScore">0%</div>
+          <div class="stat-label">Highest Score</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="improvementRate">+0%</div>
+          <div class="stat-label">Improvement Rate</div>
+        </div>
+      </div>
+
+      <!-- Analytics Charts Grid -->
+      <div class="analytics-grid">
+        <!-- Score Trend Chart -->
+        <div class="chart-card fade-in">
+          <div class="chart-header">
+            <div>
+              <div class="chart-title">
+                <span>📈</span>
+                <span>Score Trends</span>
+              </div>
+              <div class="chart-subtitle">Your performance over time</div>
+            </div>
+          </div>
+          <div class="line-chart" id="lineChart">
+            <!-- Chart content populated by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Difficulty Distribution Chart -->
+        <div class="chart-card fade-in">
+          <div class="chart-header">
+            <div>
+              <div class="chart-title">
+                <span>🎯</span>
+                <span>Performance by Difficulty</span>
+              </div>
+              <div class="chart-subtitle">Success rate across difficulty levels</div>
+            </div>
+          </div>
+          <div class="pie-chart-container">
+            <div class="pie-chart" id="pieChart">
+              <div class="pie-center">
+                <div style="font-size: 32px;" id="pieTotal">0</div>
+                <div style="font-size: 12px; color: var(--text-secondary);">Questions</div>
+              </div>
+            </div>
+            <div class="pie-legend">
+              <div class="legend-item">
+                <div class="legend-color" style="background: #22c55e;"></div>
+                <div class="legend-label">Easy</div>
+                <div class="legend-value" id="easyCount">0</div>
+              </div>
+              <div class="legend-item">
+                <div class="legend-color" style="background: #f59e0b;"></div>
+                <div class="legend-label">Medium</div>
+                <div class="legend-value" id="mediumCount">0</div>
+              </div>
+              <div class="legend-item">
+                <div class="legend-color" style="background: #ef4444;"></div>
+                <div class="legend-label">Hard</div>
+                <div class="legend-value" id="hardCount">0</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Analytics Controller Script -->
+  <script type="module" src="src/controllers/AnalyticsController.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+/* Login Container */
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 480px;
+}
+
+/* Logo */
+.logo-container {
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.logo {
+    font-size: 42px;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--color-accent-start), var(--color-accent-end));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 8px;
+}
+
+.logo-subtitle {
+    color: var(--text-secondary);
+    font-size: 16px;
+}
+
+/* Role Selector */
+.role-selector {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.role-option {
+    flex: 1;
+    padding: 16px;
+    border-radius: var(--radius-small);
+    border: 2px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    font-weight: 500;
+}
+
+.role-option:hover {
+    background: rgba(255, 255, 255, 1);
+}
+
+.role-option.active {
+    background: linear-gradient(135deg, var(--color-accent-start), var(--color-accent-end));
+    color: var(--text-light);
+    border-color: transparent;
+    box-shadow: 0 4px 20px rgba(255, 122, 89, 0.4);
+}
+
+.role-icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+/* Orbit Decoration */
+.orbit-decoration {
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 400px;
+    height: 400px;
+    opacity: 0.3;
+    pointer-events: none;
+}
+
+.orbit-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    animation: rotate 30s linear infinite;
+}
+
+.orbit-ring:nth-child(1) {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.orbit-ring:nth-child(2) {
+    width: 70%;
+    height: 70%;
+    top: 15%;
+    left: 15%;
+    animation-duration: 20s;
+    animation-direction: reverse;
+}
+
+.orbit-dot {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-accent-start), var(--color-accent-end));
+    box-shadow: 0 0 20px rgba(255, 122, 89, 0.8);
+}

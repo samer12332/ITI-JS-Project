@@ -1,0 +1,297 @@
+/* ===== Global Layout ===== */
+body {
+    padding-top: 80px;
+}
+
+.results-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== Results Card ===== */
+.results-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius-card);
+    padding: 48px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-medium);
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.result-icon {
+    font-size: 5rem;
+    /* 80px */
+    margin-bottom: 24px;
+    animation: bounceIn 0.6s ease;
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.result-title {
+    font-size: 2.25rem;
+    /* 36px */
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.result-title.success {
+    color: #22c55e;
+}
+
+.result-title.warning {
+    color: #f59e0b;
+}
+
+.result-title.failure {
+    color: #ef4444;
+}
+
+.result-message {
+    font-size: 1.125rem;
+    /* 18px */
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+    line-height: 1.6;
+}
+
+/* ===== Score Display ===== */
+.score-display {
+    font-size: 4.5rem;
+    /* 72px */
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--color-accent-start), var(--color-accent-end));
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    margin-bottom: 8px;
+}
+
+.score-label {
+    font-size: 1rem;
+    /* 16px */
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+/* ===== Stats Grid ===== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 32px 0;
+}
+
+.stat-item {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: var(--radius-small);
+    padding: 20px;
+    border: 1px solid var(--glass-border);
+}
+
+.stat-value {
+    font-size: 2rem;
+    /* 32px */
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    /* 14px */
+    color: var(--text-secondary);
+}
+
+/* ===== Breakdown Section ===== */
+.breakdown-section {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border-radius: var(--radius-card);
+    padding: 32px;
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 24px;
+}
+
+.breakdown-title {
+    font-size: 1.5rem;
+    /* 24px */
+    font-weight: 700;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* ===== Performance Chart ===== */
+.performance-chart {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    height: 200px;
+    margin: 32px 0;
+    padding: 0 20px;
+    border-bottom: 2px solid var(--glass-border);
+    gap: 20px;
+}
+
+.chart-bar {
+    background: linear-gradient(to top, var(--color-accent-start), var(--color-accent-end));
+    border-radius: var(--radius-small) var(--radius-small) 0 0;
+    min-width: 60px;
+    transition: height 0.5s ease;
+    animation: growBar 1s ease;
+    position: relative;
+}
+
+@keyframes growBar {
+    from {
+        height: 0%;
+    }
+
+    to {
+        height: var(--target-height);
+    }
+}
+
+.chart-label {
+    text-align: center;
+    font-size: 0.875rem;
+    /* 14px */
+    font-weight: 600;
+    margin-top: 12px;
+    color: var(--text-secondary);
+}
+
+.chart-value {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+/* ===== Difficulty Breakdown ===== */
+.difficulty-breakdown {
+    display: grid;
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.difficulty-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 16px;
+    border-radius: var(--radius-small);
+}
+
+.difficulty-label {
+    font-weight: 600;
+    width: 80px;
+    text-align: right;
+}
+
+.difficulty-bar-container {
+    flex: 1;
+    height: 24px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.difficulty-bar {
+    height: 100%;
+    border-radius: 50px;
+    transition: width 0.8s ease;
+    animation: fillBar 1s ease;
+}
+
+@keyframes fillBar {
+    from {
+        width: 0%;
+    }
+}
+
+.difficulty-percentage {
+    font-weight: 700;
+    min-width: 60px;
+    text-align: right;
+}
+
+/* ===== Action Buttons ===== */
+.action-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+/* ===== Decorations ===== */
+.cosmic-decoration {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    filter: blur(0);
+    opacity: 0.3;
+    pointer-events: none;
+    animation: float 8s ease-in-out infinite;
+}
+
+.decoration-1 {
+    top: 10%;
+    right: 10%;
+    background: var(--color-bubble-purple);
+}
+
+.decoration-2 {
+    bottom: 20%;
+    left: 10%;
+    background: var(--color-bubble-orange);
+    animation-delay: 2s;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .results-card {
+        padding: 32px 24px;
+    }
+
+    .score-display {
+        font-size: 3.5rem;
+        /* 56px */
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .action-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .performance-chart {
+        height: 150px;
+    }
+}

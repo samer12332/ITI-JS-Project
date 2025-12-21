@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Registration - QuizVerse</title>
+  <link rel="stylesheet" href="styles/global.css">
+  <link rel="stylesheet" href="./styles/register.css">
+</head>
+<body>
+  <!-- Floating Bubbles Background -->
+  <div class="bubbles-container">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+
+  <!-- Registration Container -->
+  <div class="register-container">
+    <div class="register-wrapper fade-in">
+      <!-- Illustration Side -->
+      <div class="illustration-side">
+        <!-- Cosmic Illustration -->
+        <div class="cosmic-illustration">
+          <div class="planet">
+            <div class="planet-ring"></div>
+          </div>
+          <div class="floating-star" style="top: 20%; left: 10%;"></div>
+          <div class="floating-star" style="top: 40%; right: 15%; animation-delay: 1s;"></div>
+          <div class="floating-star" style="bottom: 30%; left: 20%; animation-delay: 2s;"></div>
+        </div>
+
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+          <div class="mini-stat">
+            <div class="mini-stat-value">5,280</div>
+            <div class="mini-stat-label">Students</div>
+          </div>
+          <div class="mini-stat">
+            <div class="mini-stat-value">1,420</div>
+            <div class="mini-stat-label">Exams</div>
+          </div>
+          <div class="mini-stat">
+            <div class="mini-stat-value">98%</div>
+            <div class="mini-stat-label">Success Rate</div>
+          </div>
+          <div class="mini-stat">
+            <div class="mini-stat-value">4.9★</div>
+            <div class="mini-stat-label">Rating</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form Side -->
+      <div class="form-side">
+        <!-- Form Header -->
+        <div class="form-header">
+          <div class="form-title">Join QuizVerse</div>
+          <div class="form-subtitle">Create your student account and start your learning journey</div>
+        </div>
+
+        <!-- Registration Form -->
+        <form id="registerForm">
+          <!-- Profile Upload -->
+          <div class="profile-upload">
+            <div class="profile-preview" id="profilePreview">
+              👤
+            </div>
+            <label for="profilePicture" class="upload-btn">
+              Upload Profile Picture
+            </label>
+            <input type="file" id="profilePicture" accept="image/*" style="display: none;">
+          </div>
+
+          <!-- Username Field -->
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              class="input-field"
+              placeholder="Choose a username"
+              required
+            >
+          </div>
+
+          <!-- Password Field -->
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              class="input-field"
+              placeholder="Create a strong password"
+              required
+            >
+          </div>
+
+          <!-- Grade Selection -->
+          <div class="form-group">
+            <label for="grade">Grade</label>
+            <select id="grade" class="input-field" required>
+              <option value="">Select your grade</option>
+              <option value="1">Grade 1</option>
+              <option value="2">Grade 2</option>
+              <option value="3">Grade 3</option>
+            </select>
+          </div>
+
+          <!-- Mobile Number Field -->
+          <div class="form-group">
+            <label for="mobile">Mobile Number</label>
+            <input
+              type="tel"
+              id="mobile"
+              class="input-field"
+              placeholder="+20 1X XXX XXXX"
+              required
+            >
+          </div>
+
+          <!-- Error and Success Messages -->
+          <div id="errorMessage" class="error-message" style="display: none;"></div>
+          <div id="successMessage" class="success-message" style="display: none;"></div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 24px;">
+            Create Account
+          </button>
+
+          <!-- Login Link -->
+          <div class="text-center mt-md">
+            <a href="login.html" style="color: var(--text-secondary); text-decoration: none; font-size: 14px;">
+              Already have an account? <span style="color: var(--color-accent-start); font-weight: 500;">Login here</span>
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Register Controller Script -->
+  <script type="module" src="src/controllers/RegisterController.js"></script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher Dashboard - QuizVerse</title>
+  <link rel="stylesheet" href="styles/global.css">
+  <link rel="stylesheet" href="./styles/teacher-dashboard.css">
+</head>
+<body>
+  <!-- Floating Bubbles Background -->
+  <div class="bubbles-container">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+      <div class="nav-brand">QuizVerse</div>
+      <div class="nav-actions">
+        <button id="darkModeToggle" class="btn btn-secondary">
+          <span id="themeIcon">🌙</span>
+        </button>
+        <button id="logoutBtn" class="btn btn-secondary">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dashboard Container -->
+  <div class="dashboard-container">
+    <div class="container">
+      <!-- Page Header -->
+      <div class="page-header fade-in">
+        <div class="page-title">Teacher Dashboard</div>
+        <div class="page-subtitle">Create, manage, and track student exams</div>
+      </div>
+
+      <!-- Dashboard Tabs -->
+      <div class="dashboard-tabs fade-in">
+        <button class="tab-button active" data-tab="create">➕ Create Exam</button>
+        <button class="tab-button" data-tab="manage">📚 Manage Exams</button>
+        <button class="tab-button" data-tab="assign">👥 Assign Exams</button>
+        <button class="tab-button" data-tab="results">📊 View Results</button>
+      </div>
+
+      <!-- Create Exam Tab -->
+      <div id="createTab" class="tab-content active fade-in">
+        <form id="createExamForm">
+          <!-- Exam Details Section -->
+          <div class="form-section">
+            <div class="form-section-title">📝 Exam Details</div>
+
+            <!-- Exam Name Field -->
+            <div class="form-group">
+              <label for="examName">Exam Name</label>
+              <input type="text" id="examName" class="input-field" placeholder="e.g., Mathematics Final Exam" required>
+            </div>
+
+            <!-- Duration and Question Count Grid -->
+            <div class="grid-2">
+              <div class="form-group">
+                <label for="examDuration">Duration (minutes)</label>
+                <input type="number" id="examDuration" class="input-field" placeholder="30" min="1" required>
+              </div>
+
+              <div class="form-group">
+                <label for="questionCount">Number of Questions</label>
+                <input type="number" id="questionCount" class="input-field" placeholder="15" min="3" required>
+              </div>
+            </div>
+
+            <!-- Generate Questions Button -->
+            <button id="generateQuestionsBtn" type="button" class="btn btn-primary">
+              Generate Question Fields
+            </button>
+          </div>
+
+          <!-- Questions Container -->
+          <div id="questionsContainer"></div>
+
+          <!-- Score Validation -->
+          <div id="scoreValidation" class="score-validation" style="display: none;">
+            <span id="currentScore">0</span> / 100 points
+          </div>
+
+          <!-- Add Question Wrapper -->
+          <div id="addQuestionWrapper" class="add-question-wrapper hidden">
+            <button type="button" id="addQuestionBtn" class="add-question-btn">
+              Add Question ➕
+            </button>
+          </div>
+
+          <!-- Create Exam Button -->
+          <button type="submit" id="createExamBtn" class="btn btn-primary" style="width: 100%;">
+            Create Exam
+          </button>
+        </form>
+      </div>
+
+      <!-- Manage Exams Tab -->
+      <div id="manageTab" class="tab-content">
+        <div id="examsList" class="exam-list">
+          <!-- Exams list populated by JavaScript -->
+        </div>
+      </div>
+
+      <!-- Assign Exams Tab -->
+      <div id="assignTab" class="tab-content">
+        <div class="form-section">
+          <div class="form-section-title">👥 Assign Exam to Students</div>
+
+          <!-- Exam Selection -->
+          <div class="form-group">
+            <label for="examSelect">Select Exam</label>
+            <select id="examSelect" class="input-field">
+              <option value="">Choose an exam...</option>
+            </select>
+          </div>
+
+          <!-- Student Selection -->
+          <div class="form-group">
+            <label>Select Students</label>
+            <div id="studentsList" class="student-selector">
+              <!-- Students list populated by JavaScript -->
+            </div>
+          </div>
+
+          <!-- Assign Exam Button -->
+          <button id="assignExamBtn" type="button" class="btn btn-primary" style="width: 100%;">
+            Assign Exam
+          </button>
+        </div>
+      </div>
+
+      <!-- View Results Tab -->
+      <div id="resultsTab" class="tab-content">
+        <div class="form-section">
+          <!-- Results Exam Selection -->
+          <div class="form-group">
+            <label for="resultsExamSelect">Select Exam to View Results</label>
+            <select id="resultsExamSelect" class="input-field">
+              <option value="">Choose an exam...</option>
+            </select>
+          </div>
+
+          <!-- Results Container -->
+          <div id="resultsContainer">
+            <!-- Exam Result Summary -->
+            <div class="exam-result">
+              <div class="progress-ring">
+                <svg width="120" height="120">
+                  <circle class="bg" cx="60" cy="60" r="50" />
+                  <circle class="fg" cx="60" cy="60" r="50" />
+                </svg>
+                <div class="percentage-text">0%</div>
+              </div>
+              <div class="result-text">You have 0 out of 0 correct answers.</div>
+            </div>
+
+            <!-- Results Table -->
+            <div class="results-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Question</th>
+                    <th>Your Answer</th>
+                    <th>Correct</th>
+                  </tr>
+                </thead>
+                <tbody id="resultsTableBody">
+                  <!-- Table rows filled dynamically -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Question Modal -->
+  <div id="editModal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+        <h2 style="font-size: 24px; font-weight: 700;">Edit Question</h2>
+        <button id="closeModalBtn" class="icon-btn">✕</button>
+      </div>
+      <div id="editModalContent"></div>
+    </div>
+  </div>
+
+  <!-- Teacher Dashboard Controller Script -->
+  <script defer type="module" src="./src/controllers/TeacherDashboardController.js"></script>
+</body>
+</html>

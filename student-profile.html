@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Profile - QuizVerse</title>
+  <link rel="stylesheet" href="styles/global.css">
+  <link rel="stylesheet" href="./styles/student-profile.css">
+</head>
+<body>
+  <!-- Floating Bubbles Background -->
+  <div class="bubbles-container">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="container" style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+      <div class="nav-brand">QuizVerse</div>
+      <div class="nav-actions">
+        <button class="btn btn-secondary">
+          <span id="themeIcon">🌙</span>
+        </button>
+        <button class="btn btn-secondary" id="logoutbtn">Logout</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Profile Container -->
+  <div class="profile-container">
+    <div class="container">
+      <!-- Profile Header -->
+      <div class="profile-header fade-in">
+        <div class="profile-avatar" id="profileAvatar">
+          👤
+        </div>
+        <div class="profile-info">
+          <div class="profile-name" id="profileName">Loading...</div>
+          <div class="profile-meta">
+            <div class="profile-meta-item">
+              <span>📚</span>
+              <span id="gradeInfo">Grade -</span>
+            </div>
+            <div class="profile-meta-item">
+              <span>📱</span>
+              <span id="mobileInfo">-</span>
+            </div>
+            <div class="profile-meta-item">
+              <span>✅</span>
+              <span id="completedCount">0 Exams Completed</span>
+            </div>
+          </div>
+          <!-- Theme Selector -->
+          <div>
+            <div style="font-size: 14px; font-weight: 500; margin-bottom: 8px;">Choose Your Theme</div>
+            <div class="theme-selector">
+              <div class="theme-option theme-default active" data-theme="default" title="Default"></div>
+              <div class="theme-option theme-cosmic" data-theme="cosmic" title="Cosmic"></div>
+              <div class="theme-option theme-ocean" data-theme="ocean" title="Ocean"></div>
+              <div class="theme-option theme-sunset" data-theme="sunset" title="Sunset"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats Dashboard -->
+      <div class="dashboard-grid fade-in">
+        <div class="stat-card">
+          <div class="stat-value" id="totalExamsCount">0</div>
+          <div class="stat-label">Total Exams</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="averageScore">0%</div>
+          <div class="stat-label">Average Score</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="requiredCount">0</div>
+          <div class="stat-label">Required Exams</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value" id="completionRate">0%</div>
+          <div class="stat-label">Completion Rate</div>
+        </div>
+      </div>
+
+      <!-- Required Exams Section -->
+      <div class="fade-in" style="margin-bottom: 40px;">
+        <div class="section-title">
+          <span>🎯</span>
+          <span>Required Exams</span>
+        </div>
+        <div id="requiredExamsContainer" class="dashboard-grid">
+          <!-- Required exams will be populated here -->
+        </div>
+      </div>
+
+      <!-- Completed Exams Section -->
+      <div class="fade-in">
+        <div class="section-title">
+          <span>✨</span>
+          <span>Completed Exams</span>
+        </div>
+        <div id="completedExamsContainer" class="dashboard-grid">
+          <!-- Completed exams will be populated here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Student Profile Controller Script -->
+  <script type="module" src="src/controllers/StudentProfileController.js"></script>
+</body>
+</html>

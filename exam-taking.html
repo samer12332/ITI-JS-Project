@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Take Exam - QuizVerse</title>
+  <link rel="stylesheet" href="styles/global.css">
+  <link rel="stylesheet" href="./styles/exam-taking.css">
+</head>
+<body>
+  <!-- Floating Bubbles Background -->
+  <div class="bubbles-container">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+
+  <!-- Main Exam Container -->
+  <div class="exam-container">
+    <!-- Exam Header -->
+    <div class="exam-header fade-in">
+      <div class="exam-title-section">
+        <h1 id="examTitle">Loading...</h1>
+        <div class="exam-meta">
+          <span id="totalQuestions">0 Questions</span> •
+          <span id="examDuration">0 Minutes</span>
+        </div>
+      </div>
+      <div class="timer-section">
+        <div class="timer-label">Time Remaining</div>
+        <div class="timer-display" id="timerDisplay">00:00</div>
+      </div>
+    </div>
+
+    <!-- Timer Progress Bar -->
+    <div class="timer-bar">
+      <div class="timer-bar-fill" id="timerBarFill" style="width: 100%;"></div>
+    </div>
+
+    <!-- Question Container -->
+    <div class="question-container fade-in">
+      <div class="question-header">
+        <div class="question-number" id="questionNumber">Question 1</div>
+        <div>
+          <span class="question-badge" id="difficultyBadge">Medium</span>
+          <span class="badge" id="pointsBadge" style="margin-left: 8px;">0 pts</span>
+        </div>
+      </div>
+
+      <div class="question-text" id="questionText">
+        Loading question...
+      </div>
+
+      <!-- Question Image Container -->
+      <div id="questionImageContainer" style="display: flex; justify-content: center;"></div>
+
+      <!-- Answers Grid -->
+      <div class="answers-grid" id="answersContainer">
+        <!-- Answers populated by JavaScript -->
+      </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="navigation-buttons fade-in">
+      <button class="btn btn-primary btn-next" id="nextBtn" disabled>
+        Next Question →
+      </button>
+    </div>
+
+    <!-- Progress Dots -->
+    <div class="progress-dots" id="progressDots"></div>
+  </div>
+
+  <!-- Audio Feedback -->
+  <audio id="correctSound" src="./audio/rightanswer.mp3"></audio>
+  <audio id="incorrectSound" src="./audio/wronganswer.mp3"></audio>
+
+  <!-- Exam Taking Controller Script -->
+  <script type="module" src="src/controllers/ExamTakingController.js"></script>
+</body>
+</html>

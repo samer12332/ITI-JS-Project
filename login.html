@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - QuizVerse</title>
+  <link rel="stylesheet" href="styles/global.css">
+  <link rel="stylesheet" href="./styles/login.css">
+</head>
+<body>
+  <!-- Floating Bubbles Background -->
+  <div class="bubbles-container">
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+  </div>
+
+  <!-- Orbit Decoration -->
+  <div class="orbit-decoration">
+    <div class="orbit-ring">
+      <div class="orbit-dot" style="top: 0; left: 50%; transform: translateX(-50%);"></div>
+    </div>
+    <div class="orbit-ring">
+      <div class="orbit-dot" style="top: 50%; right: 0; transform: translateY(-50%);"></div>
+    </div>
+  </div>
+
+  <!-- Login Container -->
+  <div class="login-container">
+    <div class="login-card glass-card fade-in">
+      <!-- Logo Section -->
+      <div class="logo-container">
+        <div class="logo">QuizVerse</div>
+        <div class="logo-subtitle">Explore the Universe of Knowledge</div>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm">
+        <!-- Role Selector -->
+        <div class="role-selector">
+          <div class="role-option active" data-role="student">
+            <div class="role-icon">👨‍🎓</div>
+            <div>Student</div>
+          </div>
+          <div class="role-option" data-role="teacher">
+            <div class="role-icon">👨‍🏫</div>
+            <div>Teacher</div>
+          </div>
+        </div>
+
+        <!-- Username Field -->
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            class="input-field"
+            placeholder="Enter your username"
+            required
+          >
+        </div>
+
+        <!-- Password Field -->
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            class="input-field"
+            placeholder="Enter your password"
+            required
+          >
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMessage" class="error-message" style="display: none;"></div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 24px;">
+          Login to QuizVerse
+        </button>
+
+        <!-- Register Link -->
+        <div class="text-center mt-md">
+          <a href="register.html" style="color: var(--text-secondary); text-decoration: none; font-size: 14px;">
+            Don't have an account? <span style="color: var(--color-accent-start); font-weight: 500;">Register here</span>
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Login Controller Script -->
+  <script type="module" src="src/controllers/LoginController.js"></script>
+</body>
+</html>
