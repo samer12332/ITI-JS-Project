@@ -1,11 +1,16 @@
 ## emails
 sameryousry99@gmail.com
+
 eng.ali.essam@gmail.com
 ## Project README
 
-## handwritten models design
-![alt text](image.png)
-![alt text](image-1.png)
+## initial users {"student1", password: "password123"}, {"teacher1", password: "password123"}
+
+## Handwritten Models Design
+
+
+![Hierarchy 1](Hierrachy%201.jpeg)
+![Hierarchy 2](Hierrachy%202.jpeg)
 
 ## Project Overview
 
@@ -37,7 +42,7 @@ Manual adjustments were made where needed to fit the project structure.
 ## Team Contributions
 ## Team Member 1
 
-Responsible for manual implementation of:
+Responsible for implementation of:
 
 Registration
 
@@ -55,7 +60,7 @@ Exam Results
 
 ## Team Member 2
 
-Responsible for manual implementation of:
+Responsible for implementation of:
 
 Exam Service
 
