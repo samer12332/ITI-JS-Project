@@ -1,4 +1,4 @@
-# ITI JS Project
+# Quizverse Project
 
 ## Demo
 A live demo of the deployed application will be linked here once you provide the deployment URL.
