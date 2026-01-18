@@ -1,4 +1,3 @@
-/* Body and Navbar */
 body {
     padding-top: 80px;
 }
@@ -12,7 +11,7 @@ body {
 .nav-brand {
     font-size: 24px;
     font-weight: 700;
-    background: linear-gradient(135deg, var(--color-accent-start), var(--color-accent-end));
+    background: linear-gradient(135deg, #ff7a59, #ff5a2a);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -24,14 +23,12 @@ body {
     gap: 16px;
 }
 
-/* Profile Container */
 .profile-container {
     padding: 40px 20px;
     position: relative;
     z-index: 1;
 }
 
-/* Profile Header */
 .profile-header {
     background: var(--card-bg);
     backdrop-filter: blur(20px);
@@ -54,8 +51,8 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 48px;
-    color: var(--text-light);
-    border: 4px solid var(--text-light);
+    color: white;
+    border: 4px solid white;
     box-shadow: var(--shadow-soft);
     flex-shrink: 0;
 }
@@ -112,7 +109,7 @@ body {
 }
 
 .theme-option.active {
-    border-color: var(--color-accent-start);
+    border-color: #ff7a59;
     box-shadow: 0 0 20px rgba(255, 122, 89, 0.4);
 }
 
@@ -132,7 +129,6 @@ body {
     background: linear-gradient(135deg, #f59e0b, #ef4444);
 }
 
-/* Dashboard Grid */
 .dashboard-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -216,7 +212,6 @@ body {
     border: 1px solid rgba(100, 116, 139, 0.2);
 }
 
-/* Empty State */
 .empty-state {
     text-align: center;
     padding: 60px 20px;
@@ -229,19 +224,18 @@ body {
     opacity: 0.5;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .profile-header {
-        flex-direction: column;
-        text-align: center;
+    flex-direction: column;
+    text-align: center;
     }
 
     .profile-meta {
-        flex-direction: column;
-        gap: 8px;
+    flex-direction: column;
+    gap: 8px;
     }
 
     .theme-selector {
-        justify-content: center;
+    justify-content: center;
     }
 }

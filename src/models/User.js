@@ -1,6 +1,6 @@
 export default class User {
     constructor(
-         id = null,
+        id = null,
         username,
         password,
         mobile = null,

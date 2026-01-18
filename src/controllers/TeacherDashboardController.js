@@ -1,8 +1,10 @@
 import authService from "../services/AuthService.js";
 import examService from "../services/ExamService.js";
 import { DashboardView as TeacherDashboardView } from "../views/TeacherDashboardView.js";
+import { StudentProfileView } from "../views/StudentProfileView.js";
+
 class TeacherDashboardController {
-    
+
     constructor() {
         // Check authentication and redirect if not authorized
         this.currentUser = authService.getCurrentUser();
@@ -21,7 +23,7 @@ class TeacherDashboardController {
         this.init();
     }
 
-    
+
     init() {
         // Bind all event handlers
         this.view.bindSwitchTab(this.handleSwitchTab.bind(this));
@@ -51,12 +53,12 @@ class TeacherDashboardController {
         this.handleSwitchTab('manage');
     }
 
-    
+
     handleCloseEditModal() {
         this.view.closeEditModal();
     }
 
-    
+
     handleSwitchTab(tab) {
         this.view.setActiveTab(tab);
         if (tab === 'manage') {
@@ -68,7 +70,7 @@ class TeacherDashboardController {
         }
     }
 
-    
+
     handleGenerateQuestions(count) {
         if (!count || count < 3) {
             alert('Please enter at least 3 questions');
@@ -94,7 +96,7 @@ class TeacherDashboardController {
         this.updateScoreValidation();
     }
 
-    
+
     renderQuestions() {
         this.view.renderQuestions(
             this.currentQuestions,
@@ -105,7 +107,7 @@ class TeacherDashboardController {
         );
     }
 
-    
+
     handleAddQuestion() {
         const defaultQuestion = {
             questionText: '',
@@ -122,7 +124,7 @@ class TeacherDashboardController {
         this.updateScoreValidation();
     }
 
-    
+
     handleUpdateQuestion(index, field, value) {
         // keep image path separate from preview
         if (field === 'image') {
@@ -135,12 +137,12 @@ class TeacherDashboardController {
         }
     }
 
-    
+
     handleUpdateQuestionAnswer(index, ansIndex, value) {
         this.currentQuestions[index].answers[ansIndex] = value;
     }
 
-    
+
     handleUpdateQuestionImage(index, input) {
         const file = input.files && input.files[0];
         if (!file) return;
@@ -156,7 +158,7 @@ class TeacherDashboardController {
         this.currentQuestions[index].image = assumedPath;
     }
 
-  
+
     handleDeleteQuestion(index) {
         if (confirm('Delete this question?')) {
             this.currentQuestions.splice(index, 1);
@@ -165,13 +167,13 @@ class TeacherDashboardController {
         }
     }
 
-    
+
     updateScoreValidation() {
         const totalScore = this.currentQuestions.reduce((sum, q) => sum + (q.points || 0), 0);
         this.view.updateScoreValidation(totalScore);
     }
 
-    
+
     handleCreateExam(examName, duration) {
         // Validation checks
         if (this.currentQuestions.length < 3) {
@@ -269,7 +271,7 @@ class TeacherDashboardController {
         this.view.renderVersionedExams(grouped);
     }
 
-    
+
     handleViewExam(examId) {
         const exam = this.examService.getExamById(examId);
         if (!exam) return;
@@ -325,7 +327,7 @@ class TeacherDashboardController {
         }
     }
 
-    
+
     handleEditExam(examId) {
         const exam = this.examService.getExamById(examId);
         if (!exam) return;
@@ -354,7 +356,7 @@ class TeacherDashboardController {
         alert(`Editing version v${exam.version} of this exam. Saving will create a new version.`);
     }
 
-    
+
     handleDeleteExam(examId) {
         const result = this.examService.deleteExam(examId);
 
@@ -366,12 +368,19 @@ class TeacherDashboardController {
         if (result.success) {
             alert("Exam version deleted successfully.");
             this.loadExamsList();
+
+            // Re-fetch updated student profile
+            const updatedUser = this.authService.getCurrentUser();
+            const requiredExamsWithDetails = this.studentProfileController.getRequiredExamsWithDetails(updatedUser);
+
+            // Render with fresh data
+            StudentProfileView.renderStudentProfile(updatedUser, requiredExamsWithDetails);
         } else {
             alert("Failed to delete exam.");
         }
     }
 
-  
+
     loadAssignTab() {
         const exams = this.examService.getAllExams()
             .filter(e => e.createdBy === this.currentUser.id && e.isActive)
@@ -398,7 +407,7 @@ class TeacherDashboardController {
         this.view.renderAssignTab(exams, students);
     }
 
-    
+
     handleAssignExam(examId, studentIds) {
         if (!examId || studentIds.length === 0) {
             alert('Please select an exam and at least one student');
@@ -447,7 +456,7 @@ class TeacherDashboardController {
         this.view.renderResultsTab(exams);
     }
 
-    
+
     handleLoadExamResults(examId) {
         if (!examId) {
             if (this.view.resultsContainer) this.view.resultsContainer.innerHTML = '';
@@ -483,7 +492,7 @@ class TeacherDashboardController {
         );
     }
 
-   
+
     handleReviewAnswers(resultId) {
         const results = this.examService.getAllResults();
         const result = results.find(r => r.id === Number.parseInt(resultId));

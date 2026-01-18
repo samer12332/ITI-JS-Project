@@ -4,7 +4,7 @@ import { ExamTakingView } from "../views/ExamTakingView.js";
 
 
 class ExamTakingController {
-    
+
     constructor() {
         // Check authentication and redirect if not authorized
         this.currentUser = authService.checkAuth('student');
@@ -47,9 +47,15 @@ class ExamTakingController {
 
         // Start the exam
         this.initExam();
+        window.addEventListener("pagehide", () => {
+            if (!this.hasSubmittedOnExit) {
+                this.hasSubmittedOnExit = true;
+                examService.submitExamResult(this.examId, this.currentUser.id, this.userAnswers, 0);
+            }
+        });
     }
 
-    
+
     prepareQuestions(questions) {
         // Create array with original indices
         const questionsWithIndices = questions.map((q, originalIndex) => ({
@@ -89,7 +95,7 @@ class ExamTakingController {
         };
     }
 
-   
+
     initExam() {
         console.log('Original questions:', this.originalQuestions);
         console.log('Shuffled questions:', this.shuffledQuestions);
@@ -102,7 +108,7 @@ class ExamTakingController {
         this.startTimer();
     }
 
-   
+
     renderCurrentQuestion() {
         const currentQuestion = this.shuffledQuestions[this.currentQuestionIndex];
         console.log('Rendering question:', currentQuestion);
@@ -140,7 +146,7 @@ class ExamTakingController {
         );
     }
 
-    
+
     handleSelectAnswer(shuffledAnswerIndex) {
         const currentQuestion = this.shuffledQuestions[this.currentQuestionIndex];
         const originalQuestionIndex = this.questionMapping[this.currentQuestionIndex];
@@ -159,7 +165,7 @@ class ExamTakingController {
         this.renderCurrentQuestion();
     }
 
-   
+
     nextQuestion() {
         if (this.currentQuestionIndex < this.shuffledQuestions.length - 1) {
             this.currentQuestionIndex++;
@@ -172,7 +178,7 @@ class ExamTakingController {
         this.renderCurrentQuestion();
     }
 
-   
+
     startTimer() {
         this.view.updateTimer(this.timeRemaining, this.totalTime);
         this.timerInterval = setInterval(() => {
@@ -184,7 +190,7 @@ class ExamTakingController {
         }, 1000);
     }
 
-    
+
     submitExam() {
         // Check for unanswered questions
         const unanswered = this.userAnswers.filter(ans => ans === undefined).length;

@@ -13,7 +13,7 @@ export class Student extends User {
         theme = "default",
     ) {
 
-        super(id, username, password, mobile, profilePicture, "student", theme );;
+        super(id, username, password, mobile, profilePicture, "student", theme );
         this.grade = grade;
 
         this.completedExams = completedExams;

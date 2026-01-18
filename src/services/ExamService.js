@@ -133,7 +133,7 @@ class ExamService {
         if (examIndex !== -1) {
             const merged = { ...exams[examIndex], ...updates };
 
-            
+
             if (updates.questions) {
                 merged.questions = this._sanitizeQuestions(updates.questions);
                 merged.questionCount = merged.questions.length;
@@ -185,16 +185,33 @@ class ExamService {
         // 1. Check if any student has answered this exam version
         const results = this.getAllResults();
         const hasResults = results.some(r => r.examId === examIdNum);
-
         if (hasResults) {
             return { success: false, reason: "HAS_RESULTS" };
         }
 
-        // 2. Safe to delete
+        // 2. Remove exam from exams list
         const exams = this.getAllExams();
         const filteredExams = exams.filter(exam => exam.id !== examIdNum);
-
         this._saveExams(filteredExams);
+
+        // 3. Clean requiredExams and inProgressExams in service
+        this.requiredExams = (this.requiredExams || []).filter(exam => exam.id !== examIdNum);
+        this.inProgressExams = (this.inProgressExams || []).filter(exam => exam.id !== examIdNum);
+        console.log(this.requiredExams);
+        console.log(this.inProgressExams);
+
+        // 4. Clean student and teacher profiles in localStorage
+        const users = JSON.parse(localStorage.getItem("quizverse_users")) || [];
+        users.forEach(u => {
+            if (u.role === "student") {
+                u.requiredExams = (u.requiredExams || []).filter(id => id !== examIdNum);
+                u.completedExams = (u.completedExams || []).filter(id => id !== examIdNum);
+            } else if (u.role === "teacher") {
+                u.examsCreated = (u.examsCreated || []).filter(id => id !== examIdNum);
+            }
+        });
+        localStorage.setItem("quizverse_users", JSON.stringify(users));
+
         return { success: true };
     }
 

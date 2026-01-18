@@ -46,26 +46,20 @@ class StudentProfileController {
         const requiredExams = [];
 
         if (profile.requiredExams && Array.isArray(profile.requiredExams)) {
+            profile.requiredExams = profile.requiredExams.filter(examRef => {
+                const examId = typeof examRef === 'object' ? examRef.id : examRef;
+                return !!this.examService.getExamById(examId); // keep only if exam still exists
+            });
+
             profile.requiredExams.forEach(examRef => {
-                if (typeof examRef === 'object' && examRef !== null && examRef.id) {
-                    // Exam reference is an object with details
+                const exam = typeof examRef === 'object' ? examRef : this.examService.getExamById(examRef);
+                if (exam) {
                     requiredExams.push({
-                        id: examRef.id,
-                        name: examRef.name || `Exam ${examRef.id}`,
-                        duration: examRef.duration || 30,
-                        questionCount: examRef.questionCount || examRef.questions?.length || 10
+                        id: exam.id,
+                        name: exam.name || `Exam ${exam.id}`,
+                        duration: exam.duration || 30,
+                        questionCount: exam.questionCount || exam.questions?.length || 10
                     });
-                } else if (typeof examRef === 'number' || typeof examRef === 'string') {
-                    // Exam reference is an ID, fetch full exam data
-                    const exam = this.examService.getExamById(examRef);
-                    if (exam) {
-                        requiredExams.push({
-                            id: exam.id,
-                            name: exam.name || `Exam ${exam.id}`,
-                            duration: exam.duration || 30,
-                            questionCount: exam.questionCount || exam.questions?.length || 10
-                        });
-                    }
                 }
             });
         }
@@ -73,7 +67,7 @@ class StudentProfileController {
         return requiredExams;
     }
 
-    
+
     getCompletedExamsWithDetails(profile) {
         const completedExams = [];
 
@@ -122,7 +116,7 @@ class StudentProfileController {
         return completedExams;
     }
 
-    
+
     handleThemeChange(theme) {
         this.themeService.applyTheme(theme);
         this.authService.updateUserProfile(this.currentUser.id, { theme });
@@ -138,7 +132,7 @@ class StudentProfileController {
         this.authService.logout();
     }
 
-    
+
     handleStartExam(examId) {
         window.location.href = `exam-taking.html?examId=${examId}`;
     }
