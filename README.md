@@ -70,16 +70,6 @@ Note: If the project requires a backend for full functionality (authentication/e
 
 UI and animations were generated with AI-assisted design and refined manually. Animations use CSS keyframes and transitions to improve user experience where appropriate.
 
-## Team Contributions
-
-Team Member 1:
-- Registration, Login, Authentication Service, Theme Service, Student Profile, Exam Taking, Exam Results
-
-Team Member 2:
-- Exam Service, Teacher Dashboard, Analytics & Reporting
-
-All models and service contracts were agreed upon jointly to ensure consistency across the app.
-
 ## Contact
 
 - sameryousry99@gmail.com
