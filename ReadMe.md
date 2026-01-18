@@ -18,6 +18,14 @@ This project is a web-based application built using a clean MVC architecture.
 
 The focus of the project is on architecture, collaboration, and scalable service-based design.
 
+## Demo
+
+A live demo of the deployed application will be linked here once you provide the deployment URL.
+
+Deployment link: <ADD_DEPLOYMENT_LINK_HERE>
+
+(Replace the placeholder above with your deployment link and I'll update the README.)
+
 ## Architecture
 
 Pattern: MVC (Model – View – Controller)
