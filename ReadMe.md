@@ -1,95 +1,109 @@
-## emails
-sameryousry99@gmail.com
-
-eng.ali.essam@gmail.com
-## Project README
-
-## initial users {"student1", password: "password123"}, {"teacher1", password: "password123"}
-
-## Handwritten Models Design
-
-
-![Hierarchy 1](Hierrachy%201.jpeg)
-![Hierarchy 2](Hierrachy%202.jpeg)
-
-## Project Overview
-
-This project is a web-based application built using a clean MVC architecture.
-
-The focus of the project is on architecture, collaboration, and scalable service-based design.
+# ITI JS Project
 
 ## Demo
-
 A live demo of the deployed application will be linked here once you provide the deployment URL.
 
-Deployment link: <ADD_DEPLOYMENT_LINK_HERE>
+Deployment link: https://effulgent-tulumba-57a4fe.netlify.app/
 
-(Replace the placeholder above with your deployment link and I'll update the README.)
 
-## Architecture
 
-Pattern: MVC (Model – View – Controller)
+---
 
-The MVC structure was suggested by one of the team members based on backend Node.js experience.
+## Overview
+ITI JS Project is a web-based exam platform built with a clear Model–View–Controller (MVC) approach. The repository holds the frontend (HTML/CSS/JS), client-side services, and assets used to demonstrate user flows such as registration, exam taking, result reporting, and basic analytics.
 
-The architecture was adopted to ensure:
+Focus:
+- Clear separation of concerns (MVC)
+- Modular client-side services
+- Rapid prototyping and easy local preview
 
-Clear separation of concerns
+---
 
-Maintainable and scalable codebase
+## Architecture (MVC)
+- Models
+  - Client-side models and data-handling logic are located in `src/`. These represent users, exams, questions, answers, and results.
+- Views
+  - Static HTML pages in the repository root act as the Views. Main pages:
+    - `index.html` — Landing / dashboard
+    - `login.html` — Login form
+    - `register.html` — Registration form
+    - `student-profile.html` — Student profile UI
+    - `teacher-dashboard.html` — Instructor dashboard
+    - `exam-taking.html` — Exam interface for students
+    - `exam-result.html` — Exam results view
+    - `analytics.html` — Analytics and reporting
+- Controllers / Services
+  - JavaScript modules under `src/` implement application logic: authentication flows, theme service, exam lifecycle, result calculation, and interactions with any (future) backend.
+
+This MVC organization keeps views, data structures, and behavior separated so each area can be extended or replaced with minimal impact on others.
+
+---
+
+## Key Features
+- User registration and login (client-side / demo flows)
+- Theme service and UI preferences
+- Student profile and exam-taking workflow
+- Exam scoring and result presentation
+- Teacher dashboard and basic analytics/reporting
+- AI-assisted UI design and CSS animations
+
+---
+
+## Repository Structure (high level)
+- `index.html`
+- `login.html`
+- `register.html`
+- `student-profile.html`
+- `teacher-dashboard.html`
+- `exam-taking.html`
+- `exam-result.html`
+- `analytics.html`
+- `src/` — JavaScript source (models, services, controllers)
+- `styles/` — CSS styles and animations
+- `images/`, `Hierrachy 1.jpeg`, `Hierrachy 2.jpeg` — design diagrams and assets
+- `audio/` — optional audio assets
+- `package-lock.json` — npm lockfile (if any packages used)
+
+---
+
+## Getting Started (Local Preview)
+Quick preview (no server required):
+1. Clone the repo:
+   git clone https://github.com/samer12332/ITI-JS-Project.git
+2. Open `index.html` in your browser.
+
+
+Notes:
+- The current repo primarily contains client-side code. For persistent users, secure authentication, and saved exams you will need to attach or implement a backend API. If/when a backend is added, include setup and endpoint details here.
+
+---
+
+## Initial Users (demo/testing)
+- Username: `student1` — Password: `password123`  
+- Username: `teacher1` — Password: `password123`  
+
+(These are example/demo credentials — do not use them in production.)
+
+---
 
 ## UI & Animations
+- UI was AI-assisted and refined manually.
+- Animations use CSS keyframes and transitions for smoother UX.
+- Styles and animation rules are stored in `styles/`.
 
-UI Design: AI-generated
+---
 
-UI Animations & Transitions: AI-generated and implemented
+## Contributing
+Contributions are welcome:
+1. Open an issue describing the change or feature.
+2. Fork the repository and create a branch for your change.
+3. Submit a pull request with a clear description and any setup steps.
 
-Meaninig of animations are keyframes for assurance
+Keep changes modular (separate services/controllers from views).
 
-Manual adjustments were made where needed to fit the project structure.
-## Team Contributions
-## Team Member 1
+---
 
-Responsible for implementation of:
+## Contact
+- sameryousry99@gmail.com  
+- eng.ali.essam@gmail.com
 
-Registration
-
-Login
-
-Authentication Service
-
-Theme Service
-
-Student Profile
-
-Exam Taking
-
-Exam Results
-
-## Team Member 2
-
-Responsible for implementation of:
-
-Exam Service
-
-Teacher Dashboard
-
-Analytics & Reporting
-
-## Models
-
-All models were designed by agreement between both team members.
-
-This ensured consistency across services and features.
-
-## Collaboration & Code Review
-
-Any service created by one team member was reviewed by the other, since services represent the core foundation of the project.
-
-This approach ensured:
-
-Shared ownership
-
-Code consistency
-
-Easier future maintenance
