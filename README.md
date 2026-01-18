@@ -1,10 +1,10 @@
-# ITI JS Project
+# QuizVerse Project
 
 ## Demo
 
 A live demo of the deployed application will be linked here once you provide the deployment URL.
 
-Deployment link: <ADD_DEPLOYMENT_LINK_HERE>
+Deployment link: https://effulgent-tulumba-57a4fe.netlify.app/
 
 ## Overview
 
